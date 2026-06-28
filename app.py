@@ -22,8 +22,15 @@ def home():
         # Convert review to sequence
         review_sequence = [1]  # Start token
 
+        NUM_WORDS = 5000
+
         for word in review.split():
-            review_sequence.append(word_to_id.get(word, 2) + 3)
+            idx = word_to_id.get(word, 2) + 3
+        
+            if idx < NUM_WORDS:
+                review_sequence.append(idx)
+            else:
+                review_sequence.append(2)
 
         # Pad sequence
         review_sequence = sequence.pad_sequences(
@@ -65,5 +72,8 @@ def home():
 
 
 
+import os
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
