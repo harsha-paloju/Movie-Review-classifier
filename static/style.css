@@ -1,0 +1,352 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#f8fafc;
+    color:#1e293b;
+    line-height:1.6;
+}
+
+/* ================= NAVBAR ================= */
+
+nav{
+    width:100%;
+    background:#ffffff;
+    padding:20px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid #e2e8f0;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:700;
+    color:#4f46e5;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:35px;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:#475569;
+    font-weight:500;
+    transition:.3s;
+}
+
+nav ul li a:hover{
+    color:#4f46e5;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    width:90%;
+    max-width:1000px;
+    margin:70px auto;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:52px;
+    margin-bottom:20px;
+    color:#0f172a;
+}
+
+.hero p{
+    max-width:760px;
+    margin:auto;
+    font-size:18px;
+    color:#64748b;
+}
+
+/* ================= MAIN CONTAINER ================= */
+
+.container{
+    width:90%;
+    max-width:1100px;
+    margin:50px auto;
+    display:flex;
+    gap:40px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+/* ================= CARD ================= */
+
+.card,
+.result-card{
+    flex:1;
+    min-width:330px;
+    background:white;
+    border-radius:20px;
+    padding:35px;
+    border:1px solid #e2e8f0;
+    box-shadow:0 10px 30px rgba(0,0,0,.05);
+}
+
+.card h2,
+.result-card h2{
+    margin-bottom:25px;
+    text-align:center;
+    color:#0f172a;
+}
+
+/* ================= FORM ================= */
+
+label{
+    font-weight:600;
+    display:block;
+    margin-bottom:10px;
+}
+
+textarea{
+    width:100%;
+    min-height:220px;
+    resize:none;
+    border:1px solid #cbd5e1;
+    border-radius:12px;
+    padding:18px;
+    font-size:16px;
+    outline:none;
+    transition:.3s;
+    background:#ffffff;
+}
+
+textarea:focus{
+    border:2px solid #4f46e5;
+    box-shadow:0 0 10px rgba(79,70,229,.15);
+}
+
+textarea::placeholder{
+    color:#94a3b8;
+}
+
+/* ================= BUTTON ================= */
+
+button{
+    width:100%;
+    margin-top:25px;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#4f46e5;
+    color:white;
+    font-size:17px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    background:#4338ca;
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(79,70,229,.25);
+}
+
+/* ================= RESULT ================= */
+
+.result-card{
+    text-align:center;
+}
+
+.emoji{
+    font-size:70px;
+    margin:15px 0;
+}
+
+.result-card h3{
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+.result-card p{
+    color:#475569;
+}
+
+.confidence{
+    margin-top:25px;
+    padding:18px;
+    border-radius:12px;
+    background:#f8fafc;
+    border:1px solid #e2e8f0;
+    font-size:18px;
+}
+
+.confidence span{
+    display:block;
+    margin-top:8px;
+    font-size:30px;
+    font-weight:bold;
+    color:#4f46e5;
+}
+
+/* ================= POSITIVE ================= */
+
+.positive{
+    background:#f0fdf4;
+    border-left:6px solid #16a34a;
+}
+
+.positive h3{
+    color:#15803d;
+}
+
+/* ================= NEGATIVE ================= */
+
+.negative{
+    background:#fef2f2;
+    border-left:6px solid #dc2626;
+}
+
+.negative h3{
+    color:#b91c1c;
+}
+
+/* ================= INFO SECTION ================= */
+
+.info-section,
+.model-section{
+    width:90%;
+    max-width:1100px;
+    margin:80px auto;
+    text-align:center;
+}
+
+.info-section h2,
+.model-section h2{
+    font-size:36px;
+    margin-bottom:20px;
+}
+
+.info-section p{
+    max-width:800px;
+    margin:auto;
+    color:#64748b;
+}
+
+/* ================= GRID ================= */
+
+.grid{
+    margin-top:40px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.box{
+    background:white;
+    padding:30px;
+    border-radius:16px;
+    border:1px solid #e2e8f0;
+    transition:.3s;
+}
+
+.box:hover{
+    transform:translateY(-6px);
+    box-shadow:0 12px 25px rgba(0,0,0,.08);
+}
+
+.box h3{
+    color:#4f46e5;
+    margin-bottom:15px;
+}
+
+.box p{
+    color:#64748b;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    margin-top:80px;
+    background:#ffffff;
+    border-top:1px solid #e2e8f0;
+    padding:35px;
+    text-align:center;
+}
+
+footer p{
+    color:#64748b;
+    margin:6px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+
+    .container{
+        flex-direction:column;
+    }
+
+}
+
+@media(max-width:768px){
+
+    nav{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:20px;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .card,
+    .result-card{
+        width:100%;
+    }
+
+}
+
+@media(max-width:480px){
+
+    .hero h1{
+        font-size:30px;
+    }
+
+    .logo{
+        font-size:22px;
+    }
+
+    nav{
+        padding:15px 5%;
+    }
+
+    .card,
+    .result-card{
+        padding:25px;
+    }
+
+    textarea{
+        min-height:180px;
+    }
+
+}

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovieMind AI | Movie Review Sentiment Analysis</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav>
+        <div class="logo">
+            🎬 MovieMind AI
+        </div>
+
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#model">Model</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+
+    <section class="hero">
+
+        <h1>AI Powered Movie Review Analysis</h1>
+
+        <p>
+            Discover whether a movie review expresses a
+            <strong>Positive</strong> or
+            <strong>Negative</strong> sentiment using a Deep Learning
+            LSTM model trained on the IMDB Movie Reviews dataset.
+        </p>
+
+    </section>
+
+    <!-- Main Card -->
+
+    <div class="container">
+
+        <div class="card">
+
+            <h2>Analyze a Movie Review</h2>
+
+            <form action="/" method="POST">
+
+                <label>Enter Your Review</label>
+
+                <textarea
+                    name="review"
+                    rows="10"
+                    placeholder="Example: This movie was absolutely fantastic. The acting, music and screenplay were outstanding..."
+                    required>{{ review if review else "" }}</textarea>
+
+                <button type="submit">
+                    Analyze Review
+                </button>
+
+            </form>
+
+        </div>
+
+        {% if result %}
+
+        <div class="result-card {{ color }}">
+
+            <h2>Prediction Result</h2>
+
+            <div class="emoji">
+                {% if color == "positive" %}
+                    😊
+                {% else %}
+                    😞
+                {% endif %}
+            </div>
+
+            <h3>{{ result }}</h3>
+
+            <p>{{ message }}</p>
+
+            <div class="confidence">
+
+                Confidence
+
+                <span>{{ confidence }}%</span>
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+    <!-- About -->
+
+    <section id="about" class="info-section">
+
+        <h2>About This Project</h2>
+
+        <p>
+
+            MovieMind AI is a Deep Learning based sentiment analysis web
+            application that predicts whether a movie review is
+            positive or negative. The application is built using
+            Flask, TensorFlow/Keras, HTML and CSS.
+
+        </p>
+
+    </section>
+
+    <!-- Model -->
+
+    <section id="model" class="model-section">
+
+        <h2>Model Details</h2>
+
+        <div class="grid">
+
+            <div class="box">
+                <h3>Dataset</h3>
+                <p>IMDB Movie Reviews</p>
+            </div>
+
+            <div class="box">
+                <h3>Algorithm</h3>
+                <p>LSTM Neural Network</p>
+            </div>
+
+            <div class="box">
+                <h3>Framework</h3>
+                <p>TensorFlow / Keras</p>
+            </div>
+
+            <div class="box">
+                <h3>Language</h3>
+                <p>Python + Flask</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer>
+
+        <p>
+
+            Built with ❤️ using
+            TensorFlow • Flask • HTML • CSS
+
+        </p>
+
+        <p>
+
+            © 2026 Harsha Paloju
+
+        </p>
+
+    </footer>
+
+</body>
+</html>
