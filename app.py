@@ -17,58 +17,61 @@ def home():
 
     if request.method == "POST":
 
-        review = request.form["review"].strip().lower()
+        try:
 
-        # Convert review to sequence
-        review_sequence = [1]  # Start token
+            review = request.form["review"].strip().lower()
+            print("Review:", review)
 
-        NUM_WORDS = 5000
+            review_sequence = [1]
 
-        for word in review.split():
-            idx = word_to_id.get(word, 2) + 3
-        
-            if idx < NUM_WORDS:
-                review_sequence.append(idx)
+            NUM_WORDS = 5000
+
+            for word in review.split():
+                idx = word_to_id.get(word, 2) + 3
+
+                if idx < NUM_WORDS:
+                    review_sequence.append(idx)
+                else:
+                    review_sequence.append(2)
+
+            print(review_sequence)
+
+            review_sequence = sequence.pad_sequences(
+                [review_sequence],
+                maxlen=200
+            )
+
+            prediction = model.predict(review_sequence, verbose=0)[0][0]
+
+            print("Prediction:", prediction)
+
+            if prediction >= 0.5:
+                result = "😊 Positive Review"
+                color = "positive"
+                confidence = round(prediction * 100, 2)
+                message = "The model predicts that this review expresses a positive sentiment."
             else:
-                review_sequence.append(2)
+                result = "😞 Negative Review"
+                color = "negative"
+                confidence = round((1 - prediction) * 100, 2)
+                message = "The model predicts that this review expresses a negative sentiment."
 
-        # Pad sequence
-        review_sequence = sequence.pad_sequences(
-            [review_sequence],
-            maxlen=200
-        )
-
-        # Predict
-        prediction = model.predict(review_sequence, verbose=0)[0][0]
-
-        if prediction >= 0.5:
-            result = "😊 Positive Review"
-            color = "positive"
-            confidence = round(prediction * 100, 2)
-            message = (
-                "The model predicts that this review expresses a "
-                "positive sentiment."
-            )
-        else:
-            result = "😞 Negative Review"
-            color = "negative"
-            confidence = round((1 - prediction) * 100, 2)
-            message = (
-                "The model predicts that this review expresses a "
-                "negative sentiment."
+            return render_template(
+                "index.html",
+                review=review,
+                result=result,
+                confidence=confidence,
+                color=color,
+                message=message
             )
 
-        return render_template(
-            "index.html",
-            review=review,
-            result=result,
-            confidence=confidence,
-            color=color,
-            message=message
-        )
+        except Exception as e:
+            import traceback
+            traceback.print_exc()
+
+            return f"<h1>Error</h1><pre>{e}</pre>"
 
     return render_template("index.html")
-
 
 
 
